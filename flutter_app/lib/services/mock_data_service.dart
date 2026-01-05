@@ -1,0 +1,265 @@
+import '../models/flight.dart';
+import '../models/airport.dart';
+import '../models/announcement.dart';
+
+/// Mock data service for flights, airports, and announcements
+/// This replaces real API calls during development
+class MockDataService {
+  // Mock airports
+  static List<Airport> getMockAirports() {
+    return [
+      Airport(
+        id: 1,
+        code: 'SVO',
+        name: 'Шереметьево',
+        city: 'Москва',
+        country: 'Россия',
+      ),
+      Airport(
+        id: 2,
+        code: 'DME',
+        name: 'Домодедово',
+        city: 'Москва',
+        country: 'Россия',
+      ),
+      Airport(
+        id: 3,
+        code: 'LED',
+        name: 'Пулково',
+        city: 'Санкт-Петербург',
+        country: 'Россия',
+      ),
+      Airport(
+        id: 4,
+        code: 'JFK',
+        name: 'John F. Kennedy International',
+        city: 'Нью-Йорк',
+        country: 'США',
+      ),
+      Airport(
+        id: 5,
+        code: 'CDG',
+        name: 'Charles de Gaulle',
+        city: 'Париж',
+        country: 'Франция',
+      ),
+      Airport(
+        id: 6,
+        code: 'LHR',
+        name: 'London Heathrow',
+        city: 'Лондон',
+        country: 'Великобритания',
+      ),
+      Airport(
+        id: 7,
+        code: 'DXB',
+        name: 'Dubai International',
+        city: 'Дубай',
+        country: 'ОАЭ',
+      ),
+      Airport(
+        id: 8,
+        code: 'PEK',
+        name: 'Beijing Capital',
+        city: 'Пекин',
+        country: 'Китай',
+      ),
+    ];
+  }
+
+  // Mock flights
+  static List<Flight> getMockFlights() {
+    final now = DateTime.now();
+    
+    return [
+      Flight(
+        id: 1,
+        flightNumber: 'SU 101',
+        departureCity: 'Москва',
+        arrivalCity: 'Нью-Йорк',
+        departureTime: now.add(const Duration(days: 1, hours: 2)),
+        arrivalTime: now.add(const Duration(days: 1, hours: 12)),
+        status: 'по расписанию',
+        availableSeats: 120,
+        totalSeats: 180,
+        basePrice: 45000.0,
+        aircraftId: 1,
+        originAirportId: 1,
+        destinationAirportId: 2,
+      ),
+      Flight(
+        id: 2,
+        flightNumber: 'SU 102',
+        departureCity: 'Москва',
+        arrivalCity: 'Санкт-Петербург',
+        departureTime: now.add(const Duration(hours: 3)),
+        arrivalTime: now.add(const Duration(hours: 4, minutes: 30)),
+        status: 'по расписанию',
+        availableSeats: 45,
+        totalSeats: 150,
+        basePrice: 3500.0,
+        aircraftId: 1,
+        originAirportId: 1,
+        destinationAirportId: 2,
+      ),
+      Flight(
+        id: 3,
+        flightNumber: 'SU 203',
+        departureCity: 'Париж',
+        arrivalCity: 'Москва',
+        departureTime: now.add(const Duration(days: 2, hours: 6)),
+        arrivalTime: now.add(const Duration(days: 2, hours: 14)),
+        status: 'по расписанию',
+        availableSeats: 78,
+        totalSeats: 180,
+        basePrice: 38000.0,
+        aircraftId: 1,
+        originAirportId: 1,
+        destinationAirportId: 2,
+      ),
+      Flight(
+        id: 4,
+        flightNumber: 'SU 304',
+        departureCity: 'Санкт-Петербург',
+        arrivalCity: 'Москва',
+        departureTime: now.add(const Duration(hours: 5)),
+        arrivalTime: now.add(const Duration(hours: 6, minutes: 45)),
+        status: 'задержан',
+        availableSeats: 12,
+        totalSeats: 150,
+        basePrice: 4200.0,
+        aircraftId: 1,
+        originAirportId: 1,
+        destinationAirportId: 2,
+      ),
+      Flight(
+        id: 5,
+        flightNumber: 'SU 405',
+        departureCity: 'Москва',
+        arrivalCity: 'Дубай',
+        departureTime: now.add(const Duration(days: 3)),
+        arrivalTime: now.add(const Duration(days: 3, hours: 5)),
+        status: 'по расписанию',
+        availableSeats: 156,
+        totalSeats: 200,
+        basePrice: 25000.0,
+        aircraftId: 1,
+        originAirportId: 1,
+        destinationAirportId: 2,
+      ),
+      Flight(
+        id: 6,
+        flightNumber: 'SU 506',
+        departureCity: 'Лондон',
+        arrivalCity: 'Москва',
+        departureTime: now.subtract(const Duration(hours: 2)),
+        arrivalTime: now.add(const Duration(hours: 4)),
+        status: 'по расписанию',
+        availableSeats: 0,
+        totalSeats: 180,
+        basePrice: 48000.0,
+        aircraftId: 1,
+        originAirportId: 1,
+        destinationAirportId: 2,
+      ),
+      Flight(
+        id: 7,
+        flightNumber: 'SU 607',
+        departureCity: 'Москва',
+        arrivalCity: 'Пекин',
+        departureTime: now.add(const Duration(days: 4)),
+        arrivalTime: now.add(const Duration(days: 4, hours: 8)),
+        status: 'отменён',
+        availableSeats: 0,
+        totalSeats: 200,
+        basePrice: 43000.0,
+        aircraftId: 1,
+        originAirportId: 1,
+        destinationAirportId: 2,
+      ),
+      Flight(
+        id: 8,
+        flightNumber: 'SU 708',
+        departureCity: 'Москва',
+        arrivalCity: 'Париж',
+        departureTime: now.add(const Duration(days: 5)),
+        arrivalTime: now.add(const Duration(days: 5, hours: 3)),
+        status: 'по расписанию',
+        availableSeats: 90,
+        totalSeats: 180,
+        basePrice: 39000.0,
+        aircraftId: 1,
+        originAirportId: 1,
+        destinationAirportId: 2,
+      ),
+      Flight(
+        id: 9,
+        flightNumber: 'SU 809',
+        departureCity: 'Москва',
+        arrivalCity: 'Лондон',
+        departureTime: now.add(const Duration(days: 6)),
+        arrivalTime: now.add(const Duration(days: 6, hours: 4)),
+        status: 'по расписанию',
+        availableSeats: 67,
+        totalSeats: 180,
+        basePrice: 51000.0,
+        aircraftId: 1,
+        originAirportId: 1,
+        destinationAirportId: 2,
+      ),
+      Flight(
+        id: 10,
+        flightNumber: 'SU 910',
+        departureCity: 'Париж',
+        arrivalCity: 'Москва',
+        departureTime: now.add(const Duration(days: 7)),
+        arrivalTime: now.add(const Duration(days: 7, hours: 8)),
+        status: 'по расписанию',
+        availableSeats: 134,
+        totalSeats: 180,
+        basePrice: 37000.0,
+        aircraftId: 1,
+        originAirportId: 1,
+        destinationAirportId: 2,
+      ),
+    ];
+  }
+
+  // Mock announcements (only for passengers)
+  static List<Announcement> getMockAnnouncements() {
+    final now = DateTime.now();
+    
+    return [
+      Announcement(
+        id: 1,
+        title: 'Новые правила регистрации на рейсы',
+        message: 'Сообщаем об изменении правил регистрации на рейсы. Регистрация открывается за 24 часа до вылета и закрывается за 40 минут до вылета.',
+        createdAt: now.subtract(const Duration(days: 2)),
+      ),
+      Announcement(
+        id: 2,
+        title: 'Дополнительные меры безопасности',
+        message: 'В связи с ужесточением мер безопасности просим пассажиров прибывать в аэропорт не менее чем за 2 часа до вылета.',
+        createdAt: now.subtract(const Duration(days: 5)),
+      ),
+      Announcement(
+        id: 3,
+        title: 'Новые маршруты в Азию',
+        message: 'Рады сообщить об открытии новых рейсов в страны Азии. Билеты уже доступны для бронирования.',
+        createdAt: now.subtract(const Duration(days: 10)),
+      ),
+      Announcement(
+        id: 4,
+        title: 'Скидки на рейсы в Европу',
+        message: 'Специальное предложение: скидка 20% на все рейсы в страны Европы при бронировании до конца месяца.',
+        createdAt: now.subtract(const Duration(days: 1)),
+      ),
+      Announcement(
+        id: 5,
+        title: 'Изменение расписания рейсов',
+        message: 'Обращаем внимание на изменения в расписании некоторых рейсов. Пожалуйста, проверьте информацию о вашем рейсе перед поездкой.',
+        createdAt: now.subtract(const Duration(hours: 6)),
+      ),
+    ];
+  }
+}
