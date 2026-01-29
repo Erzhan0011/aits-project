@@ -30,5 +30,7 @@ def check_schema():
         
     conn.close()
 
+
+
 if __name__ == "__main__":
     check_schema()
